@@ -17,5 +17,5 @@ Created on Crew 0.51.1 (most up to date at this time)
 ## Running the Script
 It uses GPT-4o by default so you must have access to that to run it.
 
-***Disclaimer:** This will use gpt-4o unless you change it to use a different model, and by doing so it may incur in different costs.*
+***Disclaimer:** This will use gpt-4o unless you change it to use a different model, and by doing so it may incur different costs.*
 
