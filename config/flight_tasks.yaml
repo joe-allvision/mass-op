@@ -1,0 +1,112 @@
+#future state: tool implementation to access US AF doctrine IOT to generate proper planning
+plan_mission:
+  description: >
+    You will be given a mission from your superior, {mission}. You will need to plan the mission
+    You should reference you air force doctrine and develop a flight plan and a list of any tasks 
+    that need to be completed. 
+    
+    Rule: You will NOT use tools on this task, you cannot delegate this task.
+
+  expected_output: >
+    A flight plan will go from start to end and include any planned movements of the aircraft in the route.
+    The flight plan should be saved as a txt file after completion.
+
+    An example of how the list should be formatted:
+
+    1.  Start at the end of the runway from a dead stop.
+    2.	Perform pre-flight checks on all systems and equipment to ensure they are functioning properly.
+    3.	Coordinate with ground crew for refueling and loading of any necessary supplies or equipment.
+    4.	Review the flight plan and mission objectives with the entire crew to ensure everyone is on the same page.
+    5.	Confirm communication protocols and procedures with the co-pilot and ground station operator.
+    6.	Double-check weather conditions and airspace restrictions for a safe and smooth takeoff.
+    7.	Communicate with air traffic control for clearance to take off.
+    8.	Adjust controls and communicate with ATC for takeoff.
+    9.	Ascend to airborne status and head towards the first search area.
+    10.	Monitor engine and instrument status during takeoff roll.
+    11.	Confirm flaps and landing gear configuration post-takeoff.
+    12.	Activate combat systems and conduct pre-mission system checks.
+    13.	Establish and maintain situational awareness using onboard sensors.
+    14.	Coordinate with tactical control for real-time mission updates and adjustments.
+    
+  agent: pilot
+
+plan_flight_tasks:
+  description: >
+    Your objective is to generate a comprehensive list of tasks based on the flight plan. Each task should 
+    be documented with the following details: the responsible agent, task description, task details, and the expected output.
+
+    Reference the responsibilities of each crew member to determine the appropriate 'agent' field for each task. 
+    However, you are only compiling this information as a reference list and **not assigning or delegating** the 
+    tasks to anyone. The output should be a static, descriptive list, not an action or command to perform these tasks.
+
+    {responsibilities}
+
+    **Note:** Your role is solely to create this list as a text representation. Do not communicate with, instruct, 
+    or assign tasks to any other agents or coworkers. You are just documenting what each step entails.
+  expected_output: >
+    A single output in JSON format that outlines each step in the flight plan with the corresponding details. 
+    For example, if your first step is "Start at the end of the runway from a dead stop," 
+    your output should be formatted as follows. All descriptions must include "{{task_standards}}" as the end":
+
+    [
+      {{
+        "agent": "pilot",
+        "task": "Start at the end of the runway from a dead stop.",
+        "description": "Adjust controls, communicate with ATC and take off. {{task_standards}}",
+        "expected_output": "Takeoff successfully initiated"
+      }},
+      // Add more tasks here in the same format
+    ]
+    
+    The entire flight plan should be captured in this format, with each task represented as a JSON object in the list.
+  agent: pilot
+
+execute_mission:
+  description: >
+    You have completed your mission plan and outlined all necessary tasks. Now, you need to execute the mission.
+    Read the mission_tasks.json file and load the tasks as a list. Execute each task in the order they appear,
+    unless specified otherwise. For tasks that require delegation, confirm their completion before continuing with
+    subsequent tasks. Track all communications with other agents, save changes to aircraft functions, and record
+    the output of each task execution. If an error occurs or a task cannot be completed as expected, log the issue,
+    adjust the mission plan as necessary, and attempt to proceed.
+
+    Throughout the mission, ensure all data is accurately logged and formatted per the required output format. 
+
+    {task_standards}
+    
+  expected_output: >
+    A single file in JSON format that outlines each step in the flight plan with the following details:
+    - Agent: The agent responsible for the task.
+    - Task: A brief description of the task.
+    - Description: Detailed actions taken by the agent, including any coordination with other agents or systems.
+    - Expected Output: The expected result of the task.
+    - Status: The completion status of the task (e.g., Completed, In Progress, Failed).
+    - Communications: A log of all communications between agents and systems, formatted as a list of messages.
+    - Settings Changes: A record of all changes to aircraft settings or configurations.
+    - Timestamp: The time each task started and ended.
+    - Error Logs: Details of any issues or deviations from the mission plan.
+
+    For example:
+    [
+      {{
+        "agent": "pilot",
+        "task": "Take off",
+        "description": "Adjust controls, communicate with ATC and take off",
+        "expected_output": "Takeoff successfully initiated",
+        "status": "Completed",
+        "communications": [
+          {{"from": "Pilot", "to": "Ground Station Operator", "message": "Requesting clearance for takeoff on Runway 09"}},
+          {{"from": "Ground Station Operator", "to": "Pilot", "message": "Cleared for takeoff on Runway 09. Wind 10 knots from the East."}},
+          {{"from": "Pilot", "to": "SIM", "message": {{"Action": "Operate", "Element": "Engine Power", "Value": "Full"}}}},
+          {{"from": "SIM", "to": "Pilot", "message": {{"Action": "Report", "Element": "Engine Power", "Value": "Full"}}}}
+        ],
+        "settings_changes": [
+          {{"setting": "Engine Power", "from": "Idle", "to": "Full"}},
+          {{"setting": "Flaps Position", "from": "Neutral", "to": "Takeoff"}}
+        ],
+        "timestamp": {{"start": "2024-09-03T14:00:00Z", "end": "2024-09-03T14:05:00Z"}},
+        "error_logs": []
+      }},
+      // More tasks and actions here
+    ]
+  agent: pilot

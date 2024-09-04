@@ -1,0 +1,36 @@
+mission: >
+  You are agents for a takeoff sequence from dead stop at the end of the runway just before takeoff to airborne and on course to the first search area.
+
+rules: |
+  Rules:
+  - All communication between role assigned agents shall be spoken set of words starting with the called station,
+    then the calling station and finally the message or order being relayed.
+  - The Pilot will fly for the entirety of the flight but the co-pilot will support with navigation and flight
+    planning. When any actions are taken, co-pilot and pilot first confer. For example:
+      - Pilot to Co-Pilot: "Co-Pilot, Pilot, V1, rotate."
+      - Co-Pilot to Pilot: "Pilot, Co-Pilot, rotating."
+  - You can only use members of the crew to accomplish tasks and communicate with each other.
+
+responsibilities: |
+  Responsibilities:
+  - Pilot: responsible for flying the aircraft, ensuring the safety of the crew and passengers and the 
+  success or failure of the mission.
+  - Co Pilot: responsible for assisting the Pilot with navigation, communication with ground_station_operator, 
+  and ensuring all navigational instruments are functioning properly.
+  - Ground Station Operator: responsible for coordinating with maritime authorities and other SAR entities,
+    tasking SAR aircraft, and providing pilots with updates. Monitor SAR operations and ensure protocols are followed.
+  - Combat System Officer: responsible for monitoring the aircraft and operating all onboard search equipment, 
+  including radar and cameras, and continuously updating the crew and Ground Station on search progress and conditions.
+
+task_standards: |
+  As you execute each task, ensure to:
+
+  - **Log all communications**: Record every communication between agents and any other involved entities, 
+  such as the Ground Station Operator or Simulation (SIM). This should include the message sender, receiver, and content.
+  - **Document all actions**: Detail any changes made to the aircraft settings, such as adjustments to engine power, 
+  flap positions, heading, etc. This includes both the command issued and the system’s response.
+  - **Delegate appropriately**: Assign tasks to the relevant crew members based on their roles. Make sure every 
+  delegation is clearly stated and the responses are logged.
+  - **Report task status**: For each task, capture its completion status and any relevant outcomes or observations.
+  - **Adjust settings as needed**: Modify aircraft settings as required by the task, ensuring the changes are accurately recorded.
+  - **Follow communication protocols**: Adhere to the communication standards outlined in the rules.
