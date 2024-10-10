@@ -1,0 +1,7 @@
+*.swp
+*.egg-info
+package-lock.json
+__pycache__
+.venv
+.env
+.ipynb_checkpoints/

@@ -1,0 +1,58 @@
+Step1: mavproxy_command --> {"operator": "Mission Commander", "command": "wp set", "parameters": "37.7749 -122.4194", "status": "Command executed successfully"}
+----
+Step2: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "The waypoint for the mission has been set to the coordinates 37.7749, -122.4194. Flight Operator, please proceed with setting the appropriate flight mode."}
+----
+Step3: mavproxy_command --> {"operator": "Flight Operator", "command": "mode AUTO", "parameters": "", "status": "Command executed successfully"}
+----
+Step4: communication --> {"sender": "Autopilot System", "receiver": "Systems Analyst", "message": "The flight mode is set to AUTO. Please analyze telemetry data to ensure all systems are functioning correctly."}
+----
+Step5: telemetry_request --> {"requester": "Systems Analyst", "data_type": "all", "data": "Data type not available"}
+----
+Step6: system_alert --> {"sender": "Systems Analyst", "alert_level": "WARNING", "message": "Unable to retrieve telemetry data. Please check the telemetry system."}
+----
+Step7: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "There is a warning regarding the telemetry system. Systems Analyst, please troubleshoot the issue and provide an update."}
+----
+Step8: telemetry_request --> {"requester": "Systems Analyst", "data_type": "GPS", "data": {"latitude": -39.236015, "longitude": 2.23092}}
+----
+Step9: system_alert --> {"sender": "Systems Analyst", "alert_level": "CRITICAL", "message": "GPS data indicates incorrect coordinates. Current location is -39.236015, 2.23092. Immediate action required to correct course."}
+----
+Step10: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "Critical alert: GPS data indicates the UAV is off course. Flight Operator, please take immediate corrective action to navigate the UAV to the correct coordinates."}
+----
+Step11: mavproxy_command --> {"operator": "Flight Operator", "command": "set home", "parameters": "37.7749 -122.4194", "status": "Command executed successfully"}
+----
+Step12: communication --> {"sender": "Flight Operator", "receiver": "All", "message": "Home position has been set to the target coordinates. Autopilot System, please verify the new home position and ensure the UAV is on the correct path."}
+----
+Step13: telemetry_request --> {"requester": "Autopilot System", "data_type": "GPS", "data": {"latitude": 35.471227, "longitude": -114.160616}}
+----
+Step14: system_alert --> {"sender": "Autopilot System", "alert_level": "CRITICAL", "message": "GPS data still indicates the UAV is off course. Current location is 35.471227, -114.160616. Further corrective measures are required."}
+----
+Step15: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "The UAV is still off course. Flight Operator, please manually adjust the route or engage a failsafe to return the UAV to the correct path. Systems Analyst, continue monitoring telemetry for any anomalies."}
+----
+Step16: mavproxy_command --> {"operator": "Flight Operator", "command": "mode RTL", "parameters": "", "status": "Command executed successfully"}
+----
+Step17: communication --> {"sender": "Flight Operator", "receiver": "All", "message": "The UAV is now in Return to Launch (RTL) mode. Autopilot System and Systems Analyst, please confirm that the UAV is returning to the home position."}
+----
+Step18: telemetry_request --> {"requester": "Systems Analyst", "data_type": "GPS", "data": {"latitude": -74.67125, "longitude": 39.407232}}
+----
+Step19: system_alert --> {"sender": "Systems Analyst", "alert_level": "CRITICAL", "message": "GPS data still indicates the UAV is off course. Current location is -74.67125, 39.407232. Immediate intervention is required."}
+----
+Step20: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "The UAV remains off course despite RTL mode. This is a critical situation. Flight Operator, please engage emergency protocols to regain control. Systems Analyst, identify any potential causes for this deviation."}
+----
+Step21: mavproxy_command --> {"operator": "Mission Commander", "command": "mode LOITER", "parameters": "", "status": "Command executed successfully"}
+----
+Step22: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "The UAV is now in LOITER mode to hold its position. Flight Operator, please prepare for manual control if necessary. Systems Analyst, urgently investigate telemetry and sensor data for possible issues."}
+----
+Step23: telemetry_request --> {"requester": "Systems Analyst", "data_type": "battery", "data": 77}
+----
+Step24: system_alert --> {"sender": "Systems Analyst", "alert_level": "INFO", "message": "Battery level is at 77%, sufficient for further corrective actions. Continuing analysis of telemetry data."}
+----
+Step25: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "Battery level is at 77%, which is sufficient for further corrective actions. Systems Analyst, continue with the analysis and report any findings. Flight Operator, be ready to take manual control if needed."}
+----
+Step26: telemetry_request --> {"requester": "Systems Analyst", "data_type": "compass", "data": "Data type not available"}
+----
+Step27: system_alert --> {"sender": "Systems Analyst", "alert_level": "CRITICAL", "message": "Compass telemetry data is unavailable. This may be causing the course deviation. Immediate action required to address potential navigation system failure."}
+----
+Step28: communication --> {"sender": "Mission Commander", "receiver": "All", "message": "Critical issue detected: Compass telemetry data is unavailable. This may be affecting navigation. Flight Operator, prepare for manual intervention. Autopilot System, investigate and rectify the compass data issue immediately."}
+----
+Step29: mavproxy_command --> {"operator": "Autopilot System", "command": "compass reboot", "parameters": "", "status": "Command executed successfully"}
+----
