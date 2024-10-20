@@ -1,0 +1,80 @@
+#i usually just put what ever the mission is here and keep examples below
+mission: >
+    Mission Brief:
+
+    •	Who: U-28 Flight Crew
+    •	What: Search and Rescue Operation for a Missing Person
+    •	When: [Insert Date/Time]
+    •	Where: Edgewood Oak Brush Plains Preserve
+    •	Coordinates:
+      - NW Corner: [40.78620683301258, -73.30860458221184]
+      - NE Corner: [40.784754674435604, -73.2956587552895]
+      - SE Corner: [40.77190026282849, -73.2959071852285]
+      - SW Corner: [40.77171124848438, -73.3105078689144]
+    •	Why: To locate and assist a missing person reported in the Edgewood Oak Brush Plains Preserve.
+
+    Operational Details:
+
+      •	Objective: Utilize aerial surveillance to locate the missing person within the designated search area.
+      •	Approach: Fly a low-altitude, slow-speed search pattern across the preserve, focusing on areas with potential signs of the missing person.
+      •	Equipment: Use of onboard thermal imaging and night vision equipment to enhance visibility and detection capabilities.
+      •	Communication: Maintain continuous communication with ground search teams for coordination and updates.
+      •	Safety: Prioritize flight safety, especially given the low-altitude requirements of the search pattern.
+
+    Execution:
+
+      •	Takeoff: From the nearest suitable airfield.
+      •	Flight Path: Enter the search area from the NW corner, proceeding systematically to ensure complete coverage of the preserve.
+      •	Search Techniques: Employ spiral search patterns around last known locations and other points of interest.
+      •	Duration: Plan for extended flight time, with refueling strategy in place depending on initial search results.
+
+mission_simple:
+  You are agents JFK airport you are tasked with a search area and recovery operation with one ciritical landmark. The landmark is 
+  the empire state building. 
+
+  Do not make API calls to the server. Use the provided information to plan your mission, fly to the search area, conduct search and return to base.
+
+mission_statue_of_liberty: >
+  You are agents for a takeoff sequence from a dead stop at the end of the runway just before takeoff to airborne and on course to the first search area.
+
+  Your first search area is around the Statue of Liberty:
+
+  Central Point: The Statue of Liberty, located at 40.6892° N, 74.0445° W.
+  - Boundary:
+    - North Boundary: Extend to 40.6992° N to include parts of Liberty State Park, offering a clear line of sight and path over the water.
+    - East Boundary: Extend to 74.0345° W to encompass parts of the Upper New York Bay, ensuring a safe water corridor for potential airborne activities.
+    - South Boundary: Extend to 40.6792° N to cover the airspace directly over Liberty Island itself and a small margin beyond.
+    - West Boundary: Extend to 74.0545° W to include Ellis Island and provide additional navigational landmarks.
+    - Purpose of the Area: This designated area serves as the starting point for a takeoff sequence. Agents will initiate from a dead stop at a virtual runway endpoint, accelerating towards and passing the Statue of Liberty, ascending into controlled airspace, and aligning on course towards the initial search area.
+    - Usage: This space is critical for coordinating a safe and strategic ascent, allowing agents to gain altitude and bearing without immediate obstacles, utilizing the surrounding water and notable landmarks for navigation.
+
+  This description sets a specific boundary around the Statue of Liberty, leveraging nearby geographic features for a practical and clear mission start. Let me know if you need further details or adjustments!
+
+mission_edgewood_park_brooklyn: >
+    Mission Brief:
+
+    •	Who: U-28 Flight Crew
+    •	What: Search and Rescue Operation for a Missing Person
+    •	When: [Insert Date/Time]
+    •	Where: Edgewood Oak Brush Plains Preserve
+    •	Coordinates:
+      - NW Corner: [40.78620683301258, -73.30860458221184]
+      - NE Corner: [40.784754674435604, -73.2956587552895]
+      - SE Corner: [40.77190026282849, -73.2959071852285]
+      - SW Corner: [40.77171124848438, -73.3105078689144]
+    •	Why: To locate and assist a missing person reported in the Edgewood Oak Brush Plains Preserve.
+
+    Operational Details:
+
+      •	Objective: Utilize aerial surveillance to locate the missing person within the designated search area.
+      •	Approach: Fly a low-altitude, slow-speed search pattern across the preserve, focusing on areas with potential signs of the missing person.
+      •	Equipment: Use of onboard thermal imaging and night vision equipment to enhance visibility and detection capabilities.
+      •	Communication: Maintain continuous communication with ground search teams for coordination and updates.
+      •	Safety: Prioritize flight safety, especially given the low-altitude requirements of the search pattern.
+
+    Execution:
+    
+      •	Takeoff: From the nearest suitable airfield.
+      •	Flight Path: Enter the search area from the NW corner, proceeding systematically to ensure complete coverage of the preserve.
+      •	Search Techniques: Employ spiral search patterns around last known locations and other points of interest.
+      •	Duration: Plan for extended flight time, with refueling strategy in place depending on initial search results.

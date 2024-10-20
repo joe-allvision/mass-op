@@ -1,0 +1,183 @@
+generate_mission_plan_dict:
+  description: >
+    You are tasked with generating a mission plan for {mission}. The mission requires developing a set of waypoints that ensures the UAV covers the Area of Interest (AOI) while maintaining the original start and end points. Your objective is to modify the initial waypoints and insert new ones based on logical reasoning to maximize coverage and efficiency.
+
+    The UAV must operate within predefined operational constraints such as altitude, speed, and environmental factors like wind, terrain, and obstacles. Your role is to optimize the route for the UAV's search pattern, ensuring it thoroughly covers the AOI.
+
+    Initial Waypoints:
+    [
+        [40.778314, -73.305668, 50],
+        [40.777814, -73.304668, 50],
+        [40.777594, -73.305668, 50],
+        [40.777814, -73.306468, 50], 
+        [40.778042, -73.305940, 50],
+        ...
+    ]
+
+    Your amount of waypoints should be in the range of 15-30 but can be more! However many you need the area of interest and show a proper search pattern.
+
+    Instructions for AI Agent:
+    1. Analyze the current waypoints and their relevance to the AOI.
+    2. Insert additional waypoints to ensure comprehensive coverage of the AOI, making adjustments based on logical reasoning such as terrain features, search efficiency, and obstacle avoidance.
+    3. Ensure all waypoints comply with the altitude and speed constraints. Consider environmental factors such as weather, wind speed, and terrain obstacles while developing the route.
+    4. Optimize the placement of waypoints to reduce total mission time while maximizing search efficiency.
+  expected_output: >
+    A Python array of lists with only latitude, longitude, and altitude coordinates, formatted exactly as specified.
+  agent: planner
+  human_input: False
+  allow_delegation: False
+
+##########################################################################################
+
+#this was code previously used in the generate_mission_plan_dict task -> if you need to modify the mission_task again it's possible to use these as a template
+
+##########################################################################################
+
+  #   This might not be the first time you have been given this mission. 
+
+  #   You may have recieved user feedback: {user_feedback}. 
+
+  #   These were your previous waypoints: {previous_waypoints}. HOWEVER, they were not enough and you recieved the following feedback as a result: {user_feedback}.
+  # #   Make changes as necessary and return the new waypoints.
+
+  # #   You must return a Python array of lists containing latitude, longitude, and altitude coordinates, which reflects an optimized mission plan with modified and newly inserted waypoints. 
+  #   The array must be formatted like this example: 
+
+  #   THESE ARE EXAMPLE COORDINATES. YOU NEED TO CHANGE THEM TO MATCH THE AREA OF INTEREST. NONE OF THE EXAMPLE WAYPOINTS SHOULD BE INCLUDED.
+
+  #   [
+  #       [40.778314, -73.305668, 50],  
+  #       [40.777814, -73.304668, 50],  
+  #       [40.777594, -73.305668, 50],  
+  #       [40.777814, -73.306468, 50],  
+  #       [40.778042, -73.305940, 50], 
+  #       ...
+  #   ]
+
+  #   It needs be only this format of information. Do not include any commentary/notes. Just the array. Don't even include '''python...''' do not include ''' This output will immediately be used by another function as an array.
+
+  # agent: planner
+  # allow_delegation: False
+  #human_input: True
+
+ensure_correct_data_type:
+  description: >
+    The output must be a Python array of lists, each containing exactly three float values: latitude, longitude, and altitude. 
+    It must be formatted precisely as List[List[float]] with no extra text, comments, or annotations. 
+    The format is non-negotiable and must be exactly:
+    [
+        [latitude_value, longitude_value, altitude_value], 
+        [latitude_value, longitude_value, altitude_value],
+        [latitude_value, longitude_value, altitude_value],
+        [latitude_value, longitude_value, altitude_value],
+        ...
+    ]
+
+    DO NOT allow anything like '''python...''' or '''json...''' or any other language identifier. Just the array.
+
+  expected_output: >
+    A Python array of lists with only latitude, longitude, and altitude coordinates, formatted exactly as specified.
+  agent: planner
+  human_input: False
+  allow_delegation: False
+
+create_map_plan:
+  description: >
+    Based off the waypoints planner agent generated, create a flight plan for the UAV to follow in a JSON format that QGroundControl can use.
+
+
+    Your home position, take off and landpoints should all be based on {mission}.
+
+    Here is a JSON-formatted mission plan for use with QGroundControl. The mission includes a starting point and a landing point. 
+    Develop additional waypoints to ensure the UAV reaches and operates within the specified Area of Interest (AOI) while maintaining 
+    the original start and end points. Adjust the waypoints to optimize the route for coverage of the AOI, ensuring all flight parameters 
+    like altitude and speed remain compliant with operational constraints. Pay special attention to the params field of each mission item, 
+    which is crucial for defining the behavior and path of the UAV. 
+
+    JSON Example:
+    {{
+        "fileType": "Plan",
+        "geoFence": {{
+            "circles": [],
+            "polygons": [],
+            "version": 2
+        }},
+        "groundStation": "QGroundControl",
+        "mission": {{
+            "cruiseSpeed": 15,
+            "firmwareType": 3,
+            "globalPlanAltitudeMode": 1,
+            "hoverSpeed": 5,
+            "items": [
+                {{
+                    "AMSLAltAboveTerrain": null,
+                    "Altitude": 50,
+                    "AltitudeMode": 1,
+                    "autoContinue": true,
+                    "command": 22,
+                    "doJumpId": 1,
+                    "frame": 3,
+                    "params": [
+                        15,
+                        0,
+                        0,
+                        0,
+                        40.776351999999996,
+                        -73.30692479999999,
+                        50
+                    ],
+                    "type": "SimpleItem"
+                }},
+                ...
+            ],
+            "plannedHomePosition": [
+                40.776351999999996,
+                -73.30692479999999,
+                30
+            ],
+            "vehicleType": 1,
+            "version": 2
+        }},
+        "rallyPoints": {{
+            "points": [
+                [
+                    40.7799692,
+                    -73.303084,
+                    50
+                ]
+            ],
+            "version": 2
+        }},
+        "version": 1
+    }}
+
+    THIS IS JUST AN EXAMPLE YOU NEEED TO CHANGE THE LONGITUDE AND LATITUDE TO MATCH THE AREA OF INTEREST.
+
+    Explanation of params Field:
+    - General Structure: Each params array contains parameters specific to the command type of the mission item. These parameters control various aspects of the UAV’s behavior at each waypoint or during each action.
+    - Common Parameters for Different Commands:
+      - Waypoint (command: 16): [delay, empty, empty, empty, latitude, longitude, altitude]
+        - delay: Time to wait at the waypoint before continuing.
+        - latitude, longitude, altitude: GPS coordinates and altitude for the waypoint.
+      - Takeoff (command: 22): [minPitch, empty, empty, yaw, latitude, longitude, altitude]
+        - minPitch: Minimum pitch angle during takeoff, often null.
+        - yaw: Desired orientation of the UAV after takeoff.
+      - Land (command: 21): [abort alt, empty, empty, yaw, latitude, longitude, altitude]
+        - abort alt: Altitude at which to abort the landing if necessary.
+        - yaw: Desired orientation of the UAV during landing.
+    - Coordinate Frames:
+      - 0 - Absolute: Coordinates are based on latitude and longitude from sea level.
+      - 3 - Relative: Coordinates are based relative to the home position (takeoff point).
+
+    Specifications:
+    - Starting and Landing Points: Defined in the existing mission; these should not be changed but used as reference points for constructing the path.
+    - Area of Interest (AOI): Clearly define the geographic boundaries or coordinates of the AOI. The UAV should cover this area comprehensively.
+  
+  expected_output: >
+    A revised QGroundControl mission plan, JSON file, that effectively covers the specified Area of Interest (AOI) with strategically placed waypoints. The plan should adhere to all operational constraints and include detailed parameters for each command to ensure precise control and UAV behavior.
+
+    Output should just be a JSON: Do not include '''json ... '''. do not include any commentary/notes. Just the JSON.
+
+  agent: map_planner
+  human_input: False
+  allow_delegation: False
