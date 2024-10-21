@@ -1,4 +1,4 @@
-# Urban SAR: MavLink Flight Simulation and LangGraph + CrewAI Integration
+# MavLink Flight Simulation and LangGraph + CrewAI Integration
 
 This project integrates natural language processing with sample flight simulation technologies, utilizing the CrewAI and LangGraph frameworks to process inputs and execute operations within a simulated environment. The primary objective of this project is to convert natural language inputs, have agents process these inputs, and execute a flight simulation script using QGroundControl, ArduPilot, and MAVLink.
 
