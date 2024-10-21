@@ -59,12 +59,7 @@ Ensure you have access to GPT-4o as the simulation uses it by default.
 
 ### `mission_input.yaml`
 
-The `mission_input.yaml` file defines the mission, rules, responsibilities, and task standards for the simulation:
-
-- **Mission**: Details the objective of the simulation, which is the takeoff and navigation to the first search area.
-- **Rules**: Communication protocols and procedures between agents.
-- **Responsibilities**: Defines the roles of the Pilot, Co-Pilot, Ground Station Operator, and Combat System Officer.
-- **Task Standards**: Outlines how tasks should be logged, documented, delegated, and communicated.
+The `mission_input.yaml` file provides sample missions. You can load any of these and add more as you desire.
 
 You can modify the `mission_input.yaml` file to customize the mission parameters and agent behaviors.
 
