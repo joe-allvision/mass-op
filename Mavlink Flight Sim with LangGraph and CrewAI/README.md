@@ -14,9 +14,9 @@ This project integrates natural language processing with sample flight simulatio
 
 ## Overview
 
-In addition, this project also tests the ability for CrewAI and LangGraph to be used in the same code base. This was done with the hypothesis that each may develop their own strengths and identifying their interoperability early poses benefits. It also offers human-in-the-loop interactions through feedback at set points of this process.
+In addition, this project integrates agents crews built in CrewAI as nodes in LangGraph. This approach joins the ergonomics of CrewAI and the flexibility of LangGraph. Ihis pattern also enables human-in-the-loop interactions through feedback at defined points in the agentic workflow.
 
-Important note: these agents are simply creating the plan given the inputs. The simulated flight is a script where the agents input their plans' waypoints into a predefined process. (Starting the aircraft, testing it's calibration and other necessities to begin the simulation)
+In this workflow, agents create a flight plan based on high-level guidance for a search and rescue mission and predefined processes. The simulated flight is a MAVlink script; the agents generate the waypoints and append them to the flight script. 
 
 ## Setup
 
