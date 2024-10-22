@@ -2,14 +2,14 @@ from typing import Literal
 from langgraph.graph import StateGraph, START, END
 
 #import the nodes
-from graph_nodes.planning import planning
-from graph_nodes.ask_mission_feedback import ask_mission_feedback
-from graph_nodes.execute import execute
-from graph_nodes.human_mission_input import human_mission_input
-from graph_nodes.load_sample_mission import load_sample_mission
+from graph_contents.graph_nodes.planning import planning
+from graph_contents.graph_nodes.ask_mission_feedback import ask_mission_feedback
+from graph_contents.graph_nodes.execute import execute
+from graph_contents.graph_nodes.human_mission_input import human_mission_input
+from graph_contents.graph_nodes.load_sample_mission import load_sample_mission
 
 #import the missionState: central data structure
-from missionState import MissionState
+from graph_contents.missionState import MissionState
 
 #routing functions
 #this is the routing function for the human_mission_input node

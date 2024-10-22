@@ -1,4 +1,4 @@
-from graph.missionState import MissionState
+from graph_contents.missionState import MissionState
 from crewAI_crews.crews import FeedbackCrew
 
 

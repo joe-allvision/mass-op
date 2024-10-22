@@ -1,4 +1,4 @@
-from missionState import MissionState
+from graph_contents.missionState import MissionState
 from flight_sim_interaction import fly
 
 def execute(state: MissionState) -> MissionState:

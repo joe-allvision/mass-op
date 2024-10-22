@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
-from graph import create_workflow
-from graph_utils import display_and_save_graph
+from graph_contents.graph import create_workflow
+from graph_contents.graph_utils import display_and_save_graph
 import yaml
 
 load_dotenv()
