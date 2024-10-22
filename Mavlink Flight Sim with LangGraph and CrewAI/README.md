@@ -32,17 +32,17 @@ In this workflow, agents create a flight plan based on high-level guidance for a
    API_KEY=your_api_key_here
    ```
 
-3. **Install Dependencies**
-   - Install necessary tools and libraries:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Create a Virtual Environment**
+3. **Create a Virtual Environment**
    - Use a virtual environment for better isolation:
    ```bash
    python -m venv venv
    source venv/bin/activate  # For Windows: venv\Scripts\activate
+   ```
+
+4. **Install Dependencies**
+   - Install necessary tools and libraries:
+   ```bash
+   pip install -r requirements.txt
    ```
 
 ## Running the Simulation
