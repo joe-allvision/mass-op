@@ -3,6 +3,6 @@ crewai==0.70.1
 crewai-tools==0.12.1
 pymavlink==2.4.41
 
-python==3.11.10
+# python==3.11.10
 
 #other versions may also work but these are the versions that were used to develop the code
